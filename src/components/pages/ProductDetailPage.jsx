@@ -43,7 +43,7 @@ const [quantity, setQuantity] = useState(1);
         productService.getByCategory(productData.category)
       ]);
       setSeller(sellerData);
-      setRelatedProducts(related.filter(p => p.Id !== productData.Id).slice(0, 4));
+setRelatedProducts(related.filter(p => p.Id !== Number(productData.Id)).slice(0, 4));
     } catch (err) {
       setError(err.message || "Failed to load product details");
     } finally {
@@ -61,7 +61,7 @@ const handleAddToCart = () => {
   };
 
   const handleWishlistToggle = () => {
-    if (isInWishlist(product.Id)) {
+if (isInWishlist(Number(product.Id))) {
       removeFromWishlist(product.Id);
       toast.success("Removed from wishlist");
     } else {

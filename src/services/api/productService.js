@@ -12,7 +12,7 @@ const productService = {
 
   async getById(id) {
     await delay(250);
-    const product = products.find(p => p.Id === parseInt(id));
+const product = products.find(p => p.Id === Number(id));
     return product ? { ...product } : null;
   },
 
