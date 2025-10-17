@@ -87,11 +87,85 @@ const productService = {
     return false;
   },
 
-  async getMyListings(sellerId) {
+async getMyListings(sellerId) {
     await delay(300);
     return products
       .filter(p => p.sellerId === sellerId)
-      .map(p => ({ ...p }));
+      .map(p => ({ 
+        ...p,
+        views: p.views || Math.floor(Math.random() * 500) + 10,
+        favorites: p.favorites || Math.floor(Math.random() * 50) + 1,
+        promoted: p.promoted || false
+      }));
+  },
+
+  async markAsSold(id) {
+    await delay(300);
+    const index = products.findIndex(p => p.Id === parseInt(id));
+    if (index !== -1) {
+      products[index] = { ...products[index], status: "sold" };
+      return { ...products[index] };
+    }
+    throw new Error("Product not found");
+  },
+
+  async promote(id) {
+    await delay(300);
+    const index = products.findIndex(p => p.Id === parseInt(id));
+    if (index !== -1) {
+      products[index] = { ...products[index], promoted: true };
+      return { ...products[index] };
+    }
+    throw new Error("Product not found");
+  },
+
+  async duplicate(id) {
+    await delay(300);
+    const product = products.find(p => p.Id === parseInt(id));
+    if (product) {
+      const newId = Math.max(...products.map(p => p.Id)) + 1;
+      const newProduct = {
+        ...product,
+        Id: newId,
+        title: `${product.title} (Copy)`,
+        datePosted: new Date().toISOString(),
+        status: "draft",
+        views: 0,
+        favorites: 0,
+        promoted: false
+      };
+      products.unshift(newProduct);
+      return { ...newProduct };
+    }
+    throw new Error("Product not found");
+  },
+
+  async bulkDelete(ids) {
+    await delay(400);
+    products = products.filter(p => !ids.includes(p.Id));
+    return { success: true, count: ids.length };
+  },
+
+  async bulkMarkAsSold(ids) {
+    await delay(400);
+    ids.forEach(id => {
+      const index = products.findIndex(p => p.Id === id);
+      if (index !== -1) {
+        products[index] = { ...products[index], status: "sold" };
+      }
+    });
+    return { success: true, count: ids.length };
+  },
+
+  async bulkPromote(ids) {
+    await delay(400);
+    ids.forEach(id => {
+      const index = products.findIndex(p => p.Id === id);
+      if (index !== -1) {
+        products[index] = { ...products[index], promoted: true };
+      }
+    });
+    return { success: true, count: ids.length };
   }
 };
 
