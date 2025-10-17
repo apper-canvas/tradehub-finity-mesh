@@ -1,27 +1,28 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import ApperIcon from "@/components/ApperIcon";
-import Input from "@/components/atoms/Input";
-import Button from "@/components/atoms/Button";
 import categoryService from "@/services/api/categoryService";
 import productService from "@/services/api/productService";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import Input from "@/components/atoms/Input";
 
 const CreateListingPage = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
-
-  const [formData, setFormData] = useState({
+  const [tagInput, setTagInput] = useState("");
+const [formData, setFormData] = useState({
     title: "",
     description: "",
     price: "",
     category: "",
     condition: "",
     location: "",
-    images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"]
+    images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"],
+    tags: []
   });
 
   const [errors, setErrors] = useState({});
@@ -36,16 +37,16 @@ const CreateListingPage = () => {
 
   const conditions = ["Like New", "Used", "Refurbished"];
 
-  const validateStep = (currentStep) => {
+const validateStep = (currentStep) => {
     const newErrors = {};
 
     if (currentStep === 1) {
-      if (!formData.title.trim()) newErrors.title = "Title is required";
-      if (!formData.description.trim()) newErrors.description = "Description is required";
-      if (!formData.category) newErrors.category = "Category is required";
+      if (!formData.category) newErrors.category = "Please select a category";
     }
 
     if (currentStep === 2) {
+      if (!formData.title.trim()) newErrors.title = "Title is required";
+      if (!formData.description.trim()) newErrors.description = "Description is required";
       if (!formData.price || formData.price <= 0) newErrors.price = "Valid price is required";
       if (!formData.condition) newErrors.condition = "Condition is required";
       if (!formData.location.trim()) newErrors.location = "Location is required";
@@ -88,7 +89,7 @@ const CreateListingPage = () => {
     }
   };
 
-  return (
+return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
       <div className="text-center mb-8">
@@ -96,7 +97,7 @@ const CreateListingPage = () => {
           Create New Listing
         </h1>
         <p className="text-gray-600">
-          List your item in just a few simple steps
+          List your item in {step === 1 ? "just a few simple steps" : `step ${step} of 3`}
         </p>
       </div>
 
@@ -127,7 +128,7 @@ const CreateListingPage = () => {
       </div>
 
       {/* Form */}
-      <motion.div
+<motion.div
         key={step}
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -136,6 +137,82 @@ const CreateListingPage = () => {
       >
         {step === 1 && (
           <>
+            <div className="space-y-4">
+              <div className="text-center mb-6">
+                <h2 className="font-display font-bold text-2xl text-gray-900 mb-2">
+                  Select a Category
+                </h2>
+                <p className="text-gray-600">
+                  Choose the category that best describes your item
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {categories.map((category) => (
+                  <motion.div
+                    key={category.Id}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => updateField("category", category.id)}
+                    className={`cursor-pointer p-6 rounded-lg border-2 transition-all ${
+                      formData.category === category.id
+                        ? "border-primary bg-primary/5 shadow-lg"
+                        : "border-gray-200 bg-white hover:border-primary/50 hover:shadow-md"
+                    }`}
+                  >
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div
+                        className={`w-16 h-16 rounded-full flex items-center justify-center ${
+                          formData.category === category.id
+                            ? "bg-primary text-white"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        <ApperIcon name={category.icon} size={32} />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 mb-1">
+                          {category.name}
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                          {category.count} items
+                        </p>
+                      </div>
+                      {formData.category === category.id && (
+                        <div className="absolute top-2 right-2">
+                          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                            <ApperIcon name="Check" size={16} className="text-white" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {errors.category && (
+                <div className="text-center mt-4">
+                  <p className="text-error text-sm flex items-center justify-center gap-1">
+                    <ApperIcon name="AlertCircle" size={14} />
+                    {errors.category}
+                  </p>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+{step === 2 && (
+          <>
+            <div className="text-center mb-6">
+              <h2 className="font-display font-bold text-2xl text-gray-900 mb-2">
+                Product Details
+              </h2>
+              <p className="text-gray-600">
+                Tell us more about what you're selling
+              </p>
+            </div>
+
             <div className="space-y-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Product Title *
@@ -177,61 +254,6 @@ const CreateListingPage = () => {
 
             <div className="space-y-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Category *
-              </label>
-              <select
-                value={formData.category}
-                onChange={(e) => updateField("category", e.target.value)}
-                className={`w-full px-4 py-2.5 bg-white border-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary ${
-                  errors.category ? "border-error" : "border-gray-300"
-                }`}
-              >
-                <option value="">Select a category</option>
-                {categories.map((cat) => (
-                  <option key={cat.Id} value={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
-              </select>
-              {errors.category && (
-                <p className="text-error text-sm flex items-center gap-1">
-                  <ApperIcon name="AlertCircle" size={14} />
-                  {errors.category}
-                </p>
-              )}
-            </div>
-          </>
-        )}
-
-        {step === 2 && (
-          <>
-            <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Price *
-              </label>
-              <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
-                  $
-                </span>
-                <Input
-                  type="number"
-                  value={formData.price}
-                  onChange={(e) => updateField("price", e.target.value)}
-                  placeholder="0.00"
-                  className="pl-8"
-                  error={errors.price}
-                />
-              </div>
-              {errors.price && (
-                <p className="text-error text-sm flex items-center gap-1">
-                  <ApperIcon name="AlertCircle" size={14} />
-                  {errors.price}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Condition *
               </label>
               <div className="grid grid-cols-3 gap-4">
@@ -260,6 +282,89 @@ const CreateListingPage = () => {
 
             <div className="space-y-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Price *
+              </label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
+                  $
+                </span>
+                <Input
+                  type="number"
+                  value={formData.price}
+                  onChange={(e) => updateField("price", e.target.value)}
+                  placeholder="0.00"
+                  className="pl-8"
+                  error={errors.price}
+                />
+              </div>
+              {errors.price && (
+                <p className="text-error text-sm flex items-center gap-1">
+                  <ApperIcon name="AlertCircle" size={14} />
+                  {errors.price}
+                </p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Tags
+              </label>
+              <div className="flex gap-2">
+                <Input
+                  value={tagInput}
+                  onChange={(e) => setTagInput(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      if (tagInput.trim() && !formData.tags.includes(tagInput.trim())) {
+                        updateField("tags", [...formData.tags, tagInput.trim()]);
+                        setTagInput("");
+                      }
+                    }
+                  }}
+                  placeholder="Add tags (press Enter)"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    if (tagInput.trim() && !formData.tags.includes(tagInput.trim())) {
+                      updateField("tags", [...formData.tags, tagInput.trim()]);
+                      setTagInput("");
+                    }
+                  }}
+                >
+                  <ApperIcon name="Plus" size={18} />
+                </Button>
+              </div>
+              {formData.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {formData.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                    >
+                      {tag}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          updateField("tags", formData.tags.filter((_, i) => i !== index));
+                        }}
+                        className="hover:text-primary/70"
+                      >
+                        <ApperIcon name="X" size={14} />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+              <p className="text-sm text-gray-500">
+                Add tags to help buyers find your item
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Location *
               </label>
               <Input
@@ -278,7 +383,7 @@ const CreateListingPage = () => {
           </>
         )}
 
-        {step === 3 && (
+{step === 3 && (
           <div className="space-y-6">
             <div className="text-center py-8">
               <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -304,15 +409,36 @@ const CreateListingPage = () => {
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Price:</span>
-                <span className="font-display font-bold text-2xl text-primary">
-                  ${parseFloat(formData.price).toLocaleString()}
+                <span className="text-gray-600">Description:</span>
+                <span className="font-semibold text-gray-900 text-right max-w-md">
+                  {formData.description}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Condition:</span>
                 <span className="font-semibold text-gray-900">{formData.condition}</span>
               </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Price:</span>
+                <span className="font-display font-bold text-2xl text-primary">
+                  ${parseFloat(formData.price).toLocaleString()}
+                </span>
+              </div>
+              {formData.tags.length > 0 && (
+                <div className="flex justify-between items-start">
+                  <span className="text-gray-600">Tags:</span>
+                  <div className="flex flex-wrap gap-2 justify-end max-w-md">
+                    {formData.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="flex justify-between">
                 <span className="text-gray-600">Location:</span>
                 <span className="font-semibold text-gray-900">{formData.location}</span>
