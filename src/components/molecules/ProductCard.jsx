@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
+import React from "react";
 import ApperIcon from "@/components/ApperIcon";
 import Badge from "@/components/atoms/Badge";
-import { formatDistanceToNow } from "date-fns";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -20,17 +21,16 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  return (
+return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      onClick={() => navigate(`/product/${product.Id}`)}
-      className="bg-surface rounded-lg shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer overflow-hidden group"
+      className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden cursor-pointer group"
+      onClick={() => navigate(`/product/${product.id}`)}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2 }}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
         <img
-          src={product.images[0]}
+          src={product.images?.[0] || '/placeholder.png'}
           alt={product.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -53,10 +53,17 @@ const ProductCard = ({ product }) => {
 
         <div className="flex items-center justify-between pt-2 border-t border-gray-100">
           <div className="font-display font-bold text-2xl text-primary">
-            ${product.price.toLocaleString()}
+            ${product.price?.toLocaleString() || '0'}
           </div>
           <div className="text-xs text-gray-500">
-            {formatDistanceToNow(new Date(product.datePosted), { addSuffix: true })}
+            {(() => {
+              try {
+                const date = new Date(product.datePosted);
+                return isNaN(date.getTime()) ? 'Date unavailable' : formatDistanceToNow(date, { addSuffix: true });
+              } catch {
+                return 'Date unavailable';
+              }
+            })()}
           </div>
         </div>
       </div>

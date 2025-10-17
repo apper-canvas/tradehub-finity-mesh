@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
-import { formatDistanceToNow, format } from "date-fns";
+import { format, formatDistanceToNow } from "date-fns";
+import { useCart } from "@/hooks/useCart";
+import { useWishlist } from "@/hooks/useWishlist";
+import productService from "@/services/api/productService";
+import sellerService from "@/services/api/sellerService";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import ProductCard from "@/components/molecules/ProductCard";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
-import productService from "@/services/api/productService";
-import sellerService from "@/services/api/sellerService";
-import { useCart } from "@/hooks/useCart";
-import { useWishlist } from "@/hooks/useWishlist";
 const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -74,7 +74,7 @@ const handleAddToCart = () => {
     toast.info("Contact seller feature coming soon!");
   };
 
-  const handleShare = (platform) => {
+const handleShare = (platform) => {
     const url = window.location.href;
     const text = `Check out ${product.title} on TradeHub`;
     
@@ -241,14 +241,14 @@ const handleAddToCart = () => {
             <div className="flex gap-3">
               <Button
                 onClick={handleAddToCart}
-                size="lg"
+size="lg"
                 className="flex-1"
               >
                 <ApperIcon name="ShoppingCart" size={20} className="mr-2" />
                 Add to Cart
               </Button>
-              <Button 
-                variant={isInWishlist(product.Id) ? "default" : "outline"}
+              <Button
+                variant="outline"
                 size="lg"
                 onClick={handleWishlistToggle}
                 className={isInWishlist(product.Id) ? "bg-primary hover:bg-primary/90" : ""}
