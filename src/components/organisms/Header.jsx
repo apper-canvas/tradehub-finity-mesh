@@ -112,13 +112,13 @@ return (
               </button>
 
               {/* User Profile or Auth Buttons */}
-              {isAuthenticated ? (
+{isAuthenticated && currentUser ? (
                 <Dropdown
                   trigger={
                     <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-lg transition-colors">
                       <img
-                        src={currentUser.avatar}
-                        alt={currentUser.name}
+                        src={currentUser?.avatar || 'https://ui-avatars.com/api/?name=User&background=D2691E&color=fff'}
+                        alt={currentUser?.name || 'User'}
                         className="w-8 h-8 rounded-full"
                       />
                       <ApperIcon name="ChevronDown" size={16} className="text-gray-600" />
@@ -127,8 +127,8 @@ return (
                   align="right"
                 >
                   <div className="px-4 py-2 border-b border-gray-200">
-                    <p className="font-medium text-gray-900">{currentUser.name}</p>
-                    <p className="text-sm text-gray-500">{currentUser.email}</p>
+<p className="font-medium text-gray-900">{currentUser?.name || 'User'}</p>
+                    <p className="text-sm text-gray-500">{currentUser?.email || 'user@example.com'}</p>
                   </div>
                   <DropdownItem
 onClick={() => navigate("/dashboard")}
@@ -278,13 +278,13 @@ onClick={() => navigate("/dashboard")}
                       <div className="px-4 py-3 mb-2">
                         <div className="flex items-center gap-3">
                           <img
-                            src={currentUser.avatar}
-                            alt={currentUser.name}
+src={currentUser?.avatar || 'https://ui-avatars.com/api/?name=User&background=D2691E&color=fff'}
+                            alt={currentUser?.name || 'User'}
                             className="w-10 h-10 rounded-full"
                           />
                           <div>
-                            <p className="font-medium text-gray-900">{currentUser.name}</p>
-                            <p className="text-sm text-gray-500">{currentUser.email}</p>
+<p className="font-medium text-gray-900">{currentUser?.name || 'User'}</p>
+                            <p className="text-sm text-gray-500">{currentUser?.email || 'user@example.com'}</p>
                           </div>
                         </div>
                       </div>
