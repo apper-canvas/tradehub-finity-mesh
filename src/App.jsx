@@ -8,7 +8,13 @@ import CategoryPage from "@/components/pages/CategoryPage";
 import CreateListingPage from "@/components/pages/CreateListingPage";
 import MyListingsPage from "@/components/pages/MyListingsPage";
 import CartPage from "@/components/pages/CartPage";
-
+import ProductsPage from "@/components/pages/ProductsPage";
+import WishlistPage from "@/components/pages/WishlistPage";
+import LoginPage from "@/components/pages/LoginPage";
+import SignUpPage from "@/components/pages/SignUpPage";
+import DashboardPage from "@/components/pages/DashboardPage";
+import MyOrdersPage from "@/components/pages/MyOrdersPage";
+import AccountSettingsPage from "@/components/pages/AccountSettingsPage";
 function App() {
   return (
     <BrowserRouter>
@@ -25,15 +31,22 @@ function App() {
         theme="light"
         style={{ zIndex: 9999 }}
       />
-      <Routes>
+<Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchResultsPage />} />
+          <Route path="products" element={<ProductsPage />} />
           <Route path="product/:id" element={<ProductDetailPage />} />
           <Route path="category/:categoryId" element={<CategoryPage />} />
           <Route path="sell" element={<CreateListingPage />} />
           <Route path="my-listings" element={<MyListingsPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="wishlist" element={<WishlistPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
+          <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="orders" element={<MyOrdersPage />} />
+          <Route path="account-settings" element={<AccountSettingsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
