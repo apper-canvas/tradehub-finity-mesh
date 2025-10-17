@@ -131,10 +131,16 @@ return (
                     <p className="text-sm text-gray-500">{currentUser.email}</p>
                   </div>
                   <DropdownItem
-                    onClick={() => navigate("/dashboard")}
+onClick={() => navigate("/dashboard")}
                     icon={(props) => <ApperIcon name="LayoutDashboard" {...props} />}
                   >
                     My Dashboard
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => navigate("/seller-dashboard")}
+                    icon={(props) => <ApperIcon name="Store" {...props} />}
+                  >
+                    Seller Dashboard
                   </DropdownItem>
                   <DropdownItem
                     onClick={() => navigate("/my-listings")}
@@ -284,13 +290,23 @@ return (
                       </div>
                       <button
                         onClick={() => {
-                          navigate("/dashboard");
+navigate("/dashboard");
                           setMobileMenuOpen(false);
                         }}
                         className="w-full flex items-center gap-3 px-4 py-3 text-left text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors"
                       >
                         <ApperIcon name="LayoutDashboard" size={20} />
                         <span className="font-medium">My Dashboard</span>
+                      </button>
+                      <button
+                        onClick={() => {
+                          navigate("/seller-dashboard");
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-left text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors"
+                      >
+                        <ApperIcon name="Store" size={20} />
+                        <span className="font-medium">Seller Dashboard</span>
                       </button>
                       <button
                         onClick={() => {

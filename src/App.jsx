@@ -13,6 +13,7 @@ import WishlistPage from "@/components/pages/WishlistPage";
 import LoginPage from "@/components/pages/LoginPage";
 import SignUpPage from "@/components/pages/SignUpPage";
 import DashboardPage from "@/components/pages/DashboardPage";
+import SellerDashboardPage from "@/components/pages/SellerDashboardPage";
 import MyOrdersPage from "@/components/pages/MyOrdersPage";
 import AccountSettingsPage from "@/components/pages/AccountSettingsPage";
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="sign-up" element={<SignUpPage />} />
           <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="seller-dashboard" element={<SellerDashboardPage />} />
           <Route path="orders" element={<MyOrdersPage />} />
           <Route path="account-settings" element={<AccountSettingsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
