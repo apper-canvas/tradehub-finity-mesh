@@ -101,7 +101,7 @@ const MyListingsPage = () => {
             <div className="w-12 h-12 bg-success rounded-lg flex items-center justify-center">
               <ApperIcon name="DollarSign" size={24} className="text-white" />
             </div>
-<div>
+            <div>
               <div className="text-sm text-gray-600">Total Value</div>
               <div className="font-display font-bold text-2xl text-gray-900">
                 ${totalValue.toLocaleString()}
