@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 1,
+    "id": "1",
+    "name": "John Martinez",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
+    "rating": 4.8,
+    "totalSales": 47,
+    "joinDate": "2022-03-15T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "id": "2",
+    "name": "Sarah Chen",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+    "rating": 4.9,
+    "totalSales": 89,
+    "joinDate": "2021-08-22T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "id": "3",
+    "name": "Michael Brown",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
+    "rating": 4.7,
+    "totalSales": 62,
+    "joinDate": "2022-01-10T00:00:00Z"
+  }
+]

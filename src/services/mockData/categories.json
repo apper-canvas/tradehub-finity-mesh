@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "id": "electronics",
+    "name": "Electronics",
+    "icon": "Laptop",
+    "count": 342
+  },
+  {
+    "Id": 2,
+    "id": "clothing",
+    "name": "Clothing & Accessories",
+    "icon": "Shirt",
+    "count": 567
+  },
+  {
+    "Id": 3,
+    "id": "home-garden",
+    "name": "Home & Garden",
+    "icon": "Home",
+    "count": 489
+  },
+  {
+    "Id": 4,
+    "id": "sports-hobbies",
+    "name": "Sports & Hobbies",
+    "icon": "Bike",
+    "count": 234
+  },
+  {
+    "Id": 5,
+    "id": "books-media",
+    "name": "Books & Media",
+    "icon": "BookOpen",
+    "count": 178
+  },
+  {
+    "Id": 6,
+    "id": "toys-games",
+    "name": "Toys & Games",
+    "icon": "Gamepad2",
+    "count": 156
+  },
+  {
+    "Id": 7,
+    "id": "automotive",
+    "name": "Automotive",
+    "icon": "Car",
+    "count": 203
+  },
+  {
+    "Id": 8,
+    "id": "pets",
+    "name": "Pets & Supplies",
+    "icon": "PawPrint",
+    "count": 89
+  }
+]

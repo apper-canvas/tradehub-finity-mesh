@@ -1,0 +1,258 @@
+[
+  {
+    "Id": 1,
+    "title": "Apple MacBook Pro 16\" M2",
+    "description": "Powerful laptop with M2 chip, 16GB RAM, 512GB SSD. Excellent condition, barely used. Perfect for professionals and content creators. Includes original charger and box.",
+    "price": 2499,
+    "images": [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800",
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800"
+    ],
+    "category": "electronics",
+    "condition": "Like New",
+    "sellerId": "1",
+    "location": "San Francisco, CA",
+    "datePosted": "2024-01-15T10:30:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 2,
+    "title": "Vintage Leather Sofa",
+    "description": "Beautiful vintage brown leather sofa in great condition. Comfortable seating for 3 people. Minor wear consistent with age adds character. Smoke-free home.",
+    "price": 850,
+    "images": [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800"
+    ],
+    "category": "home-garden",
+    "condition": "Used",
+    "sellerId": "2",
+    "location": "Austin, TX",
+    "datePosted": "2024-01-14T15:20:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 3,
+    "title": "Canon EOS R5 Camera Body",
+    "description": "Professional mirrorless camera with 45MP full-frame sensor. Low shutter count (2000 shots). Includes battery, charger, and strap. Perfect condition with no scratches.",
+    "price": 3200,
+    "images": [
+      "https://images.unsplash.com/photo-1606980707666-ab7f56c7b6e3?w=800",
+      "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800"
+    ],
+    "category": "electronics",
+    "condition": "Like New",
+    "sellerId": "3",
+    "location": "New York, NY",
+    "datePosted": "2024-01-13T09:45:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 4,
+    "title": "Nike Air Jordan 1 Retro High",
+    "description": "Classic sneakers in Chicago colorway, size 10.5. Gently worn, excellent condition with original box. Authentic Nike product with all tags.",
+    "price": 180,
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",
+      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800"
+    ],
+    "category": "clothing",
+    "condition": "Used",
+    "sellerId": "1",
+    "location": "Los Angeles, CA",
+    "datePosted": "2024-01-12T14:10:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 5,
+    "title": "Weber Genesis II Gas Grill",
+    "description": "4-burner gas grill with side burner. Stainless steel construction, includes cover. Well-maintained and fully functional. Great for outdoor cooking.",
+    "price": 650,
+    "images": [
+      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800",
+      "https://images.unsplash.com/photo-1484980972926-edee96e0960d?w=800"
+    ],
+    "category": "home-garden",
+    "condition": "Used",
+    "sellerId": "2",
+    "location": "Seattle, WA",
+    "datePosted": "2024-01-11T11:30:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 6,
+    "title": "Gibson Les Paul Standard Guitar",
+    "description": "Classic electric guitar in tobacco sunburst finish. Upgraded pickups, plays beautifully. Includes hard case. Perfect for serious musicians.",
+    "price": 2800,
+    "images": [
+      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800",
+      "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800"
+    ],
+    "category": "sports-hobbies",
+    "condition": "Used",
+    "sellerId": "3",
+    "location": "Nashville, TN",
+    "datePosted": "2024-01-10T16:20:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 7,
+    "title": "Herman Miller Aeron Chair",
+    "description": "Ergonomic office chair, size B. Fully adjustable with lumbar support. Refurbished with new mesh. Perfect for home office or studio.",
+    "price": 480,
+    "images": [
+      "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=800",
+      "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800"
+    ],
+    "category": "home-garden",
+    "condition": "Refurbished",
+    "sellerId": "1",
+    "location": "Portland, OR",
+    "datePosted": "2024-01-09T13:45:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 8,
+    "title": "PlayStation 5 Console Bundle",
+    "description": "PS5 disc edition with two controllers and 5 games including Spider-Man and God of War. Excellent condition, works perfectly. Complete with all cables.",
+    "price": 550,
+    "images": [
+      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800",
+      "https://images.unsplash.com/photo-1622297845775-5ff3fef71d13?w=800"
+    ],
+    "category": "electronics",
+    "condition": "Like New",
+    "sellerId": "2",
+    "location": "Miami, FL",
+    "datePosted": "2024-01-08T10:15:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 9,
+    "title": "Road Bike - Carbon Frame",
+    "description": "Lightweight carbon road bike, Shimano 105 groupset, 56cm frame. Recently serviced with new tires. Perfect for long rides and racing.",
+    "price": 1200,
+    "images": [
+      "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800",
+      "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800"
+    ],
+    "category": "sports-hobbies",
+    "condition": "Used",
+    "sellerId": "3",
+    "location": "Denver, CO",
+    "datePosted": "2024-01-07T14:30:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 10,
+    "title": "KitchenAid Stand Mixer",
+    "description": "Professional 5-quart stand mixer in red. Includes dough hook, whisk, and flat beater. Barely used, works like new. Perfect for baking enthusiasts.",
+    "price": 280,
+    "images": [
+      "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800",
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800"
+    ],
+    "category": "home-garden",
+    "condition": "Like New",
+    "sellerId": "1",
+    "location": "Boston, MA",
+    "datePosted": "2024-01-06T09:20:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 11,
+    "title": "Patagonia Down Jacket - Men's L",
+    "description": "Warm down jacket in navy blue, size large. Excellent insulation, perfect for winter. Gently used with no damage. Includes stuff sack.",
+    "price": 150,
+    "images": [
+      "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800",
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800"
+    ],
+    "category": "clothing",
+    "condition": "Used",
+    "sellerId": "2",
+    "location": "Minneapolis, MN",
+    "datePosted": "2024-01-05T15:40:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 12,
+    "title": "Dyson V11 Cordless Vacuum",
+    "description": "Powerful cordless vacuum with multiple attachments. LCD screen shows runtime. Excellent suction, perfect for homes with pets. Includes charging dock.",
+    "price": 380,
+    "images": [
+      "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=800",
+      "https://images.unsplash.com/photo-1625756707501-35022f6c5768?w=800"
+    ],
+    "category": "home-garden",
+    "condition": "Like New",
+    "sellerId": "3",
+    "location": "Phoenix, AZ",
+    "datePosted": "2024-01-04T11:25:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 13,
+    "title": "Samsung 55\" 4K Smart TV",
+    "description": "Crystal UHD 4K TV with HDR support. Smart TV features with streaming apps. Excellent picture quality. Includes remote and wall mount.",
+    "price": 450,
+    "images": [
+      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800",
+      "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=800"
+    ],
+    "category": "electronics",
+    "condition": "Used",
+    "sellerId": "1",
+    "location": "Dallas, TX",
+    "datePosted": "2024-01-03T13:50:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 14,
+    "title": "Yoga Mat Set with Blocks",
+    "description": "Premium yoga mat with alignment marks, two blocks, and carrying strap. Eco-friendly material, non-slip surface. Excellent for home practice.",
+    "price": 65,
+    "images": [
+      "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=800",
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800"
+    ],
+    "category": "sports-hobbies",
+    "condition": "Like New",
+    "sellerId": "2",
+    "location": "San Diego, CA",
+    "datePosted": "2024-01-02T10:10:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 15,
+    "title": "Nespresso Coffee Machine",
+    "description": "Compact espresso machine with milk frother. Makes perfect coffee every time. Includes capsule storage drawer. Excellent condition.",
+    "price": 180,
+    "images": [
+      "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=800",
+      "https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=800"
+    ],
+    "category": "home-garden",
+    "condition": "Like New",
+    "sellerId": "3",
+    "location": "Chicago, IL",
+    "datePosted": "2024-01-01T14:35:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 16,
+    "title": "Ray-Ban Aviator Sunglasses",
+    "description": "Classic gold frame aviators with green lenses. Authentic Ray-Ban with case and cloth. Barely worn, excellent condition.",
+    "price": 120,
+    "images": [
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800",
+      "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800"
+    ],
+    "category": "clothing",
+    "condition": "Like New",
+    "sellerId": "1",
+    "location": "Las Vegas, NV",
+    "datePosted": "2023-12-31T09:45:00Z",
+    "status": "active"
+  }
+]
