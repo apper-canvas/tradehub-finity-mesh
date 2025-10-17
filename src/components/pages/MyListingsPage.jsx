@@ -101,25 +101,18 @@ const MyListingsPage = () => {
             <div className="w-12 h-12 bg-success rounded-lg flex items-center justify-center">
               <ApperIcon name="DollarSign" size={24} className="text-white" />
             </div>
-            <div>
+<div>
               <div className="text-sm text-gray-600">Total Value</div>
               <div className="font-display font-bold text-2xl text-gray-900">
                 ${totalValue.toLocaleString()}
               </div>
-</div>
+            </div>
+          </div>
+        </motion.div>
 
-                    <div className="text-sm text-gray-600 flex items-center gap-1">
-                      <ApperIcon name="clock" className="w-4 h-4" />
-                      {(() => {
-                        try {
-                          const date = new Date(product.datePosted);
-                          return isNaN(date.getTime()) ? 'Date unavailable' : formatDistanceToNow(date, { addSuffix: true });
-                        } catch {
-                          return 'Date unavailable';
-                        }
-                      })()}
-                    </div>
-                  </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="bg-gradient-to-br from-info/10 to-info/5 rounded-lg p-6 border-2 border-info/20"
         >
