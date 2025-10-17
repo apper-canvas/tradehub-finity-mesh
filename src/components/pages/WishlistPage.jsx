@@ -163,13 +163,13 @@ const WishlistPage = () => {
                   >
                     <ApperIcon name="Trash2" size={18} />
                     Clear All
-                  </Button>
+</Button>
                 </div>
               )}
             </div>
-        </div>
+          </motion.div>
 
-{wishlistItems.length === 0 ? (
+          {wishlistItems.length === 0 ? (
               <div className="bg-white rounded-2xl shadow-card p-8">
                 <Empty
                   icon="Heart"
@@ -201,11 +201,10 @@ const WishlistPage = () => {
                   >
                     <ApperIcon name="X" size={18} />
                     Clear Filters
-                  </Button>
+</Button>
                 </div>
               </div>
-        ) : (
-) : (
+            ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filteredItems.map((product, index) => (
                   <motion.div
@@ -279,13 +278,11 @@ const WishlistPage = () => {
                       </Button>
                     </div>
                   </motion.div>
-                ))}
+))}
               </div>
             )}
-          </motion.div>
         </div>
       </div>
-      </motion.div>
     </div>
   );
 };
