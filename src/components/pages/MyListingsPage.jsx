@@ -97,11 +97,11 @@ function MyListingsPage() {
     avgPrice: products.filter(p => p.status === "active").length > 0
       ? products.filter(p => p.status === "active").reduce((sum, p) => sum + p.price, 0) / products.filter(p => p.status === "active").length
       : 0,
-    engagementRate: products.length > 0
+engagementRate: products.length > 0
       ? ((products.reduce((sum, p) => sum + (p.views || 0) + (p.favorites || 0), 0)) / products.length).toFixed(1)
       : 0,
     conversionRate: products.length > 0
-      ? ((stats?.sold || products.filter(p => p.status === "sold").length) / products.length * 100).toFixed(1)
+      ? ((products.filter(p => p.status === "sold").length) / products.length * 100).toFixed(1)
       : 0
   };
 
