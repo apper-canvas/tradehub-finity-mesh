@@ -4,7 +4,7 @@ import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 
-const FilterSidebar = ({ filters, onFilterChange, categories }) => {
+const FilterSidebar = ({ filters, onFilterChange, categories = [] }) => {
   const [priceRange, setPriceRange] = useState({
     min: filters.minPrice || "",
     max: filters.maxPrice || ""
@@ -50,24 +50,24 @@ const FilterSidebar = ({ filters, onFilterChange, categories }) => {
       <div className="space-y-3">
         <h4 className="font-display font-semibold text-sm text-gray-700">Category</h4>
         <div className="space-y-2">
-          {categories.map((category) => (
+{categories.map((category) => (
             <label
-              key={category.id}
+              key={category.Id}
               className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
             >
               <input
                 type="radio"
                 name="category"
-                checked={filters.category === category.id}
+                checked={filters.category === category.Id}
                 onChange={(e) => onFilterChange({ 
                   ...filters, 
-                  category: e.target.checked ? category.id : undefined 
+                  category: e.target.checked ? category.Id : undefined 
                 })}
                 className="w-4 h-4 text-primary focus:ring-primary"
               />
               <ApperIcon name={category.icon} size={16} className="text-gray-500" />
               <span className="text-sm text-gray-700 flex-1">{category.name}</span>
-              <span className="text-xs text-gray-500">{category.count}</span>
+              <span className="text-xs text-gray-500">{category.count || 0}</span>
             </label>
           ))}
         </div>
@@ -76,13 +76,13 @@ const FilterSidebar = ({ filters, onFilterChange, categories }) => {
       {/* Price Range */}
       <div className="space-y-3">
         <h4 className="font-display font-semibold text-sm text-gray-700">Price Range</h4>
-        <div className="flex gap-2">
+<div className="flex gap-2">
           <input
             type="number"
             placeholder="Min"
             value={priceRange.min}
             onChange={(e) => handlePriceChange("min", e.target.value)}
-            className="flex-1 px-3 py-2 border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none"
+            className="flex-1 px-3 py-2 text-sm border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none transition-colors"
           />
           <span className="flex items-center text-gray-500">-</span>
           <input
@@ -90,7 +90,7 @@ const FilterSidebar = ({ filters, onFilterChange, categories }) => {
             placeholder="Max"
             value={priceRange.max}
             onChange={(e) => handlePriceChange("max", e.target.value)}
-            className="flex-1 px-3 py-2 border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none"
+            className="flex-1 px-3 py-2 text-sm border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none transition-colors"
           />
         </div>
       </div>
@@ -100,7 +100,7 @@ const FilterSidebar = ({ filters, onFilterChange, categories }) => {
         <h4 className="font-display font-semibold text-sm text-gray-700">Condition</h4>
         <div className="space-y-2">
           {conditions.map((condition) => (
-            <label
+<label
               key={condition}
               className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
             >
@@ -108,10 +108,11 @@ const FilterSidebar = ({ filters, onFilterChange, categories }) => {
                 type="radio"
                 name="condition"
                 checked={filters.condition === condition}
-                onChange={(e) => onFilterChange({ 
-                  ...filters, 
-                  condition: e.target.checked ? condition : undefined 
-                })}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    onFilterChange({ ...filters, condition });
+                  }
+                }}
                 className="w-4 h-4 text-primary focus:ring-primary"
               />
               <span className="text-sm text-gray-700">{condition}</span>

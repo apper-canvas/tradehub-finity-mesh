@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useCart } from "./useCart";
 
 const WISHLIST_STORAGE_KEY = "tradehub_wishlist";
 
 export const useWishlist = () => {
+  const { addToCart, isInCart } = useCart();
   const [wishlistItems, setWishlistItems] = useState(() => {
     const stored = localStorage.getItem(WISHLIST_STORAGE_KEY);
     return stored ? JSON.parse(stored) : [];
@@ -45,22 +47,33 @@ export const useWishlist = () => {
     }
   };
 
-  const clearWishlist = () => {
+const clearWishlist = () => {
     setWishlistItems([]);
     toast.success("Wishlist cleared");
+  };
+
+  const moveToCart = (product) => {
+    if (isInCart(product.Id)) {
+      toast.info("Item already in cart");
+      return;
+    }
+    
+    removeFromWishlist(product.Id);
+    addToCart(product);
+    toast.success("Moved to cart");
   };
 
   const getWishlistCount = () => {
     return wishlistItems.length;
   };
-
-  return {
+return {
     wishlistItems,
     addToWishlist,
     removeFromWishlist,
     isInWishlist,
     toggleWishlist,
     clearWishlist,
+    moveToCart,
     getWishlistCount
   };
 };
